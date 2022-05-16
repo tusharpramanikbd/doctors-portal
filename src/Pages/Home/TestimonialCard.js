@@ -10,7 +10,11 @@ const TestimonialCard = () => {
         Content here, content
       </p>
       <div className='flex mt-4 gap-x-4 items-center'>
-        <img src={people1} alt='avater' className='block w-16' />
+        <div className='avatar'>
+          <div className='w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
+            <img src={people1} alt='avater' />
+          </div>
+        </div>
         <div>
           <h1 className='text-2xl'>Winson Herry</h1>
           <h1>California</h1>
