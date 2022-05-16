@@ -7,7 +7,7 @@ const Appointment = () => {
       <img
         src={doctor}
         alt='doctor'
-        className='hidden lg:block lg:absolute lg:bottom-0 lg:w-2/5 lg:left-8'
+        className='hidden lg:block lg:absolute lg:bottom-0 lg:w-[32rem] lg:left-4'
       />
       <div className='lg:w-1/2 lg:ml-auto'>
         <h1 className='text-primary'>Appointment</h1>

@@ -11,6 +11,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         auto: 'auto 1fr',
+        autoright: '1fr auto',
       },
     },
   },
