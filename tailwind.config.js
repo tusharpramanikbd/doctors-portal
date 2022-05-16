@@ -5,6 +5,7 @@ module.exports = {
       backgroundImage: {
         'hero-banner': "url('/src/assets/images/bg.png')",
         appointment: "url('/src/assets/images/appointment.png')",
+        myfooter: "url('/src/assets/images/footer.png')",
       },
       backgroundColor: {
         'nav-item': '#3A4256',
