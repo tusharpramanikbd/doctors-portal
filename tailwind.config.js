@@ -5,6 +5,9 @@ module.exports = {
       backgroundImage: {
         'hero-banner': "url('/src/assets/images/bg.png')",
       },
+      backgroundColor: {
+        'nav-item': '#3A4256',
+      },
     },
   },
   daisyui: {

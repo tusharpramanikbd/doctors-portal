@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const menuItems = (
     <>
-      <li>
+      <li className='hover:bg-nav-item rounded-lg hover:text-white transition'>
         <Link to='/home'>Home</Link>
       </li>
-      <li>
+      <li className='hover:bg-nav-item rounded-lg hover:text-white transition'>
         <Link to='/about'>About</Link>
       </li>
-      <li>
+      <li className='hover:bg-nav-item rounded-lg hover:text-white transition'>
         <Link to='/appointment'>Appointment</Link>
       </li>
-      <li>
+      <li className='hover:bg-nav-item rounded-lg hover:text-white transition'>
         <Link to='/reviews'>Reviews</Link>
       </li>
-      <li>
+      <li className='hover:bg-nav-item rounded-lg hover:text-white transition'>
         <Link to='/contactus'>Contact Us</Link>
       </li>
-      <li>
+      <li className='hover:bg-nav-item rounded-lg hover:text-white transition'>
         <Link to='/login'>Login</Link>
       </li>
     </>
@@ -28,7 +28,10 @@ const Navbar = () => {
     <div className='container mx-auto navbar bg-base-100'>
       <div className='navbar-start'>
         <div className='dropdown'>
-          <label tabIndex='0' className='btn btn-ghost lg:hidden'>
+          <label
+            tabIndex='0'
+            className='btn btn-ghost lg:hidden hover:bg-nav-item hover:text-white transition'
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-5 w-5'
@@ -51,7 +54,10 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <a href='...' className='btn btn-ghost normal-case text-xl'>
+        <a
+          href='...'
+          className='btn btn-ghost normal-case text-xl hover:bg-nav-item rounded-lg hover:text-white transition'
+        >
           Doctors Portal
         </a>
       </div>
