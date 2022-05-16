@@ -20,7 +20,9 @@ const Banner = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className='btn btn-primary text-white'>Get Started</button>
+            <button className='btn btn-primary text-white font-bold bg-gradient-to-r from-secondary to-primary'>
+              Get Started
+            </button>
           </div>
         </div>
       </div>

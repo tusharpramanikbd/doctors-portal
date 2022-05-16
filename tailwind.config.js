@@ -8,6 +8,9 @@ module.exports = {
       backgroundColor: {
         'nav-item': '#3A4256',
       },
+      gridTemplateColumns: {
+        auto: 'auto 1fr',
+      },
     },
   },
   daisyui: {
