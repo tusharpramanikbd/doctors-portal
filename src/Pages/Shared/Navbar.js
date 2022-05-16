@@ -1,6 +1,29 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+  const menuItems = (
+    <>
+      <li>
+        <Link to='/home'>Home</Link>
+      </li>
+      <li>
+        <Link to='/about'>About</Link>
+      </li>
+      <li>
+        <Link to='/appointment'>Appointment</Link>
+      </li>
+      <li>
+        <Link to='/reviews'>Reviews</Link>
+      </li>
+      <li>
+        <Link to='/contactus'>Contact Us</Link>
+      </li>
+      <li>
+        <Link to='/login'>Login</Link>
+      </li>
+    </>
+  )
   return (
     <div className='navbar bg-base-100'>
       <div className='navbar-start'>
@@ -25,51 +48,15 @@ const Navbar = () => {
             tabIndex='0'
             className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
           >
-            <li>
-              <a href='...'>Home</a>
-            </li>
-            <li>
-              <a href='...'>About</a>
-            </li>
-            <li>
-              <a href='...'>Appointment</a>
-            </li>
-            <li>
-              <a href='...'>Reviews</a>
-            </li>
-            <li>
-              <a href='...'>Contact Us</a>
-            </li>
-            <li>
-              <a href='...'>Login</a>
-            </li>
+            {menuItems}
           </ul>
         </div>
         <a href='...' className='btn btn-ghost normal-case text-xl'>
-          daisyUI
+          Doctors Portal
         </a>
       </div>
       <div className='navbar-end hidden lg:flex'>
-        <ul className='menu menu-horizontal p-0'>
-          <li>
-            <a href='...'>Home</a>
-          </li>
-          <li>
-            <a href='...'>About</a>
-          </li>
-          <li>
-            <a href='...'>Appointment</a>
-          </li>
-          <li>
-            <a href='...'>Reviews</a>
-          </li>
-          <li>
-            <a href='...'>Contact Us</a>
-          </li>
-          <li>
-            <a href='...'>Login</a>
-          </li>
-        </ul>
+        <ul className='menu menu-horizontal p-0'>{menuItems}</ul>
       </div>
     </div>
   )
