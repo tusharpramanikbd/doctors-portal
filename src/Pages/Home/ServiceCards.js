@@ -7,16 +7,19 @@ import whitening from '../../assets/images/whitening.png'
 const ServiceCards = () => {
   const serviceCardInfo = [
     {
+      _id: 1,
       img: floride,
       title: 'Floride Treatment',
       text: 'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the.',
     },
     {
+      _id: 2,
       img: cavity,
       title: 'Cavity Filling',
       text: 'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the.',
     },
     {
+      _id: 3,
       img: whitening,
       title: 'Teeth Whitening',
       text: 'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the.',
@@ -24,9 +27,12 @@ const ServiceCards = () => {
   ]
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-y-0 lg:gap-x-4 mt-4'>
-      <ServiceCard serviceCardInfo={serviceCardInfo[0]} />
-      <ServiceCard serviceCardInfo={serviceCardInfo[1]} />
-      <ServiceCard serviceCardInfo={serviceCardInfo[2]} />
+      {serviceCardInfo.map((serviceCardItem) => (
+        <ServiceCard
+          key={serviceCardItem._id}
+          serviceCardInfo={serviceCardItem}
+        />
+      ))}
     </div>
   )
 }
