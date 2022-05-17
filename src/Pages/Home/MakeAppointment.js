@@ -1,7 +1,7 @@
 import React from 'react'
 import doctor from '../../assets/images/doctor-small.png'
 
-const Appointment = () => {
+const MakeAppointment = () => {
   return (
     <div className='container mx-auto bg-appointment p-8 lg:p-16 mt-24 lg:relative'>
       <img
@@ -28,4 +28,4 @@ const Appointment = () => {
   )
 }
 
-export default Appointment
+export default MakeAppointment
