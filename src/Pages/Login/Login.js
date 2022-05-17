@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -30,12 +30,14 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password)
   }
 
+  useEffect(() => {
+    if (user || gUser) {
+      navigate(from, { replace: true })
+    }
+  }, [user, gUser, navigate, from])
+
   if (loading || gLoading) {
     return <Loading />
-  }
-
-  if (user || gUser) {
-    navigate(from, { replace: true })
   }
 
   if (gError) {
