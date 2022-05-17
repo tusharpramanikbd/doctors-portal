@@ -1,27 +1,33 @@
 import React from 'react'
 import {
-  useSignInWithEmailAndPassword,
+  useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import { useForm } from 'react-hook-form'
 import Loading from '../Shared/Loading'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth)
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth)
+  const [createUserWithEmailAndPassword, user, loading, userError] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth)
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm()
   let gErrorElement, errorElement
+  const navigate = useNavigate()
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data)
-    signInWithEmailAndPassword(data.email, data.password)
+    await createUserWithEmailAndPassword(data.email, data.password)
+    await updateProfile({ displayName: data.name })
+    navigate('/appointment')
   }
 
   if (loading || gLoading) {
@@ -29,22 +35,48 @@ const Login = () => {
   }
 
   if (user || gUser) {
-    console.log(gUser)
+    console.log(user || gUser)
   }
 
   if (gError) {
     gErrorElement = <p className='text-red-500 mt-2'>Error: {gError.message}</p>
   }
-  if (error) {
-    errorElement = <p className='text-red-500 mt-2'>Error: {error.message}</p>
+  if (userError) {
+    errorElement = (
+      <p className='text-red-500 mt-2'>Error: {userError.message}</p>
+    )
   }
 
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='card w-96 bg-base-100 shadow-xl'>
         <div className='card-body'>
-          <h2 className='text-center text-2xl font-bold'>Login</h2>
+          <h2 className='text-center text-2xl font-bold'>SignUp</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='form-control w-full max-w-xs'>
+              <label className='label'>
+                <span className='label-text'>Name</span>
+              </label>
+              <input
+                type='text'
+                placeholder='Your name'
+                className='input input-bordered w-full max-w-xs'
+                {...register('name', {
+                  required: {
+                    value: true,
+                    message: 'name is required',
+                  },
+                })}
+              />
+              <label className='label'>
+                {errors.name?.type === 'required' && (
+                  <span className='label-text-alt text-red-500'>
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+            </div>
+
             <div className='form-control w-full max-w-xs'>
               <label className='label'>
                 <span className='label-text'>Email</span>
@@ -114,14 +146,14 @@ const Login = () => {
             <input
               className='btn w-full max-w-xs text-white'
               type='submit'
-              value='Login'
+              value='SignUp'
             />
           </form>
           <p className='text-center'>
             <small>
-              New to Doctors Portal?{' '}
-              <Link to='/signup' className='text-primary'>
-                Create New Account
+              Already have an account?{' '}
+              <Link to='/login' className='text-primary'>
+                Please login
               </Link>
             </small>
           </p>
@@ -139,4 +171,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp
