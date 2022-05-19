@@ -7,6 +7,7 @@ import auth from '../../firebase.init'
 import { useForm } from 'react-hook-form'
 import Loading from '../Shared/Loading'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import useToken from '../../hooks/useToken'
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth)
@@ -25,16 +26,18 @@ const Login = () => {
   // if location has pathname then go to there otherwise home
   const from = location.state?.from?.pathname || '/'
 
+  const [token] = useToken(user || gUser)
+
   const onSubmit = (data) => {
     console.log(data)
     signInWithEmailAndPassword(data.email, data.password)
   }
 
   useEffect(() => {
-    if (user || gUser) {
+    if (token) {
       navigate(from, { replace: true })
     }
-  }, [user, gUser, navigate, from])
+  }, [token, navigate, from])
 
   if (loading || gLoading) {
     return <Loading />
