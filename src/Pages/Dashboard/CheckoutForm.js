@@ -14,7 +14,7 @@ const CheckoutForm = ({ appointment }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch('http://morning-tundra-52405.herokuapp.com/create-payment-intent', {
+    fetch('https://morning-tundra-52405.herokuapp.com/create-payment-intent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const CheckoutForm = ({ appointment }) => {
         transactionId: paymentIntent.id,
       }
 
-      fetch(`http://morning-tundra-52405.herokuapp.com/booking/${_id}`, {
+      fetch(`https://morning-tundra-52405.herokuapp.com/booking/${_id}`, {
         method: 'PATCH',
         headers: {
           'content-type': 'application/json',
