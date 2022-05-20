@@ -15,7 +15,9 @@ const AddDoctor = () => {
   const imgbb_api_key = '457d96a815fe09ebaa7d6deb5dc25f42'
 
   const { data: services, isLoading } = useQuery('services', () =>
-    fetch('http://localhost:5000/services').then((res) => res.json())
+    fetch('https://morning-tundra-52405.herokuapp.com/services').then((res) =>
+      res.json()
+    )
   )
 
   const onSubmit = async (data) => {
@@ -38,7 +40,7 @@ const AddDoctor = () => {
             img: img,
           }
           // Send to database
-          fetch('http://localhost:5000/doctor', {
+          fetch('https://morning-tundra-52405.herokuapp.com/doctor', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
